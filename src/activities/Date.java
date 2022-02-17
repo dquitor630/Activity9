@@ -11,8 +11,6 @@ import java.util.Locale;
 
 public class Date {
 	private final static LocalDate currentDate = LocalDate.now();
-	private final static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy ", Locale.ENGLISH);
-	private final static DateTimeFormatter formatterHour = DateTimeFormatter.ofPattern("HH:mm:ss");
 
 	public int daysBetween(int day, int month) {
 		LocalDate firstDate = LocalDate.of(currentDate.getYear(), 1, 1);
@@ -51,6 +49,8 @@ public class Date {
 	}
 
 	public String getMoment() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy ", Locale.ENGLISH);
+		DateTimeFormatter formatterHour = DateTimeFormatter.ofPattern("HH:mm:ss");
 		LocalDateTime currentDateTime = LocalDateTime.now();
 		return "today is " + String.valueOf(currentDate.getDayOfWeek()).toLowerCase() + " "
 				+ formatter.format(currentDateTime.toLocalDate()) + "at "
